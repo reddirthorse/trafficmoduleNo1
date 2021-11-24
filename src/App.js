@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+import Traffic from './Traffic'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  let [trafficData, setTrafficData] = useState([]);
+  const url = 'http://data.ex.co.kr/openapi/odhour/trafficTimeByRoute?key=6844121548&type=json&startUnitCode=101&endUnitCode=115'
+  
+  const getTraffic = async() =>{
+    try{
+      const res = await axios.get(url);
+      const data = res.data.list
+      setTrafficData(data)
+      console.log(data)
+    }catch{
+      console.log("err")
+    }
+  }
+
+  useEffect( ()=>{
+    getTraffic()
+    
+  },[]);
+  
+  return(
+    <div>
+      
+      <Traffic trafficData = {trafficData}/>
     </div>
-  );
+    
+      
+      // {/*  */}
+    // </main>
+    
+  )
+
+  
+
+
+  
 }
 
 export default App;
