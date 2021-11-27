@@ -24,7 +24,6 @@ const Traffic = (props) =>{
 
     return(
         <div>
-            {}
             {data
             .filter((d)=>d.startUnitCode ===`${props.start} ` && d.endUnitCode ===`${props.end} ` && d.carType ==='1')
             .map((d,cnt)=>{

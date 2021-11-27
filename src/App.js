@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 import Traffic from './Traffic'
 import {default as Input} from './input'
-import Test from './test';
+
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
     name ==='start'? setStart(value) : setEnd(value)
     console.log(name,value)
   }
+ 
   //  const getTraffic = async() =>{
   //    try{
   //      const res = await axios.get(url);
